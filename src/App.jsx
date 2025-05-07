@@ -31,7 +31,7 @@ function Home() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/sepolia-blind-sign">
       <div className="min-h-screen p-6 bg-gray-50">
         <Routes>
           <Route path="/" element={<Home />} />
