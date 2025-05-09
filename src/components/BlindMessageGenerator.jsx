@@ -48,7 +48,7 @@ export default function BlindMessageGenerator({ onBlindGenerated }) {
       // 然后对其进行 base64 编码
       const base64Data = btoa(String.fromCharCode(...encodedData));
 
-      const signUrl = `${window.location.origin}/sign?data=${base64Data}`;
+      const signUrl = `${window.location.origin}${import.meta.env.BASE_URL}sign?data=${base64Data}`;
 
       setBlindFactor(blindFactor);
       setBlindedHash(blindedHash);
