@@ -1,10 +1,9 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import WalletConnect from "./components/WalletConnect";
-import BlindMessageGenerator from "./components/BlindMessageGenerator";
-import SignPage from "./pages/SignPage";
-import AuthorizedDashboard from "./components/AuthorizedDashboard";
-import ExecuteTransfer from "./components/ExecuteTransfer"; // 引入新的组件
+import WalletConnect from "@components/WalletConnect";
+import BlindMessageGenerator from "@components/BlindMessageGenerator";
+import AuthorizedDashboard from "@components/AuthorizedDashboard";
+import SignPage from "@pages/SignPage";
 
 function Home() {
   const [userAddress, setUserAddress] = useState(null);
