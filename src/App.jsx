@@ -4,7 +4,7 @@ import WalletConnect from "@components/WalletConnect";
 import BlindMessageGenerator from "@components/BlindMessageGenerator";
 import AuthorizedDashboard from "@components/AuthorizedDashboard";
 import SignPage from "@pages/SignPage";
-import ExecuteTransfer from "./components/ExecuteTransfer";
+import ExecuteTransfer from "@components/ExecuteTransfer";
 
 
 function Home() {
