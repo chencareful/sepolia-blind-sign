@@ -2,7 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: process.env.NODE_ENV === "production" ? "/sepolia-blind-sign/" : "/",  // 关键修改：确保 base 在生产环境正确
+  base: process.env.VITE_BASE_PATH || "/sepolia-blind-sign/",  // 使用环境变量动态配置base路径
+  server: {
+    port: 3000,
+    strictPort: true
+  },
   plugins: [react()],
   resolve: {
     alias: {
