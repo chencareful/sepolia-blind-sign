@@ -1,11 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 export default defineConfig({
-  base: process.env.VITE_BASE_PATH || "/sepolia-blind-sign/",  // 使用环境变量动态配置base路径
+  base: process.env.VITE_BASE_PATH || "/sepolia-blind-sign/", // 使用环境变量动态配置base路径
   server: {
     port: 3000,
-    strictPort: true
+    strictPort: true,
   },
   plugins: [react()],
   resolve: {
@@ -13,8 +15,8 @@ export default defineConfig({
       "@": "/src",
       "@components": "/src/components",
       "@pages": "/src/pages",
-      "@assets": "/src/assets"
-    }
+      "@assets": "/src/assets",
+    },
   },
   build: {
     outDir: "dist",
@@ -23,7 +25,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        404: 'public/404.html'
+        404: 'public/404.html',
       },
       output: {
         manualChunks(id) {
@@ -34,8 +36,18 @@ export default defineConfig({
             return "components";
           }
         },
-        assetFileNames: 'assets/[name]-[hash][extname]'
-      }
-    }
-  }
+        assetFileNames: 'assets/[name]-[hash][extname]',
+      },
+      external: [
+        '@radix-ui/react-dialog', // 可以添加其他需要外部化的模块
+      ],
+      plugins: [
+        nodeResolve({
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          moduleDirectories: ['node_modules'], // 确保解析 node_modules 中的模块
+        }),
+        commonjs(),
+      ],
+    },
+  },
 });
