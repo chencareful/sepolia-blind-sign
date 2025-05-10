@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sepolia Blind Sign</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面未找到</title>
+  <script>
+    window.addEventListener('load', () => {
+      const basePath = import.meta.env.BASE_URL;
+      window.location.href = `${basePath}?from=${encodeURIComponent(window.location.pathname)}`;
+    });
+  </script>
 </head>
 <body>
-    <div id="root"></div>
+  <h1>404 - 页面不存在</h1>
+  <p>正在自动跳转到首页...</p>
 </body>
 </html>

@@ -15,14 +15,19 @@ export default defineConfig({
   build: {
     outDir: "dist",
     assetsDir: "assets",
-    chunkSizeWarningLimit: 1600, // 避免大型资源警告
+    chunkSizeWarningLimit: 1600,
     rollupOptions: {
+      input: {
+        main: 'index.html',
+        404: 'public/404.html'
+      },
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
             return id.toString().split("node_modules/")[1].split("/")[0].toString();
           }
-        }
+        },
+        assetFileNames: 'assets/[name]-[hash][extname]'
       }
     }
   }
