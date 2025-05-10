@@ -32,13 +32,13 @@ export default function SignPage() {
       setSignerAddress(address);
 
       // 将 blindedHash 转换为字节数组
-      const hashBytes = ethers.utils.arrayify(blindedHash);
+      const hashBytes = ethers.getBytes(blindedHash);
 
       // 使用 MetaMask 签名 blindedHash
       const signature = await signer.signMessage(hashBytes);
 
       // 设置签名
-      setSignature(ethers.utils.splitSignature(signature)); // 提取签名的 v, r, s
+      setSignature(ethers.Signature.from(signature)); // 提取签名的 v, r, s
     } catch (err) {
       console.error("签名失败", err);
       alert("签名失败，请检查钱包连接");
