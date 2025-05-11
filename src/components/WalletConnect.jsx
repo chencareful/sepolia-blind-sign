@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DialogTitle } from "@radix-ui/react-dialog";
 import { ethers } from "ethers";
 
 export default function WalletConnect({ onAddressConnected }) {
