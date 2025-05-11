@@ -9,6 +9,10 @@ export default defineConfig({
     port: 3000,
     strictPort: true,
   },
+  preview: {
+    port: 4174,
+    strictPort: true
+  },
   plugins: [react()],
   resolve: {
     alias: {
@@ -27,10 +31,6 @@ export default defineConfig({
         main: 'index.html',
         404: 'public/404.html'
       },
-      external: [
-        '@radix-ui/react-dialog',
-        '@radix-ui/react-dropdown-menu'
-      ],
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
