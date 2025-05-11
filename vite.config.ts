@@ -25,8 +25,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        404: 'public/404.html',
+        404: 'public/404.html'
       },
+      external: [
+        '@radix-ui/react-dialog',
+        '@radix-ui/react-dropdown-menu'
+      ],
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
@@ -36,18 +40,8 @@ export default defineConfig({
             return "components";
           }
         },
-        assetFileNames: 'assets/[name]-[hash][extname]',
-      },
-      external: [
-        '@radix-ui/react-dialog', // 可以添加其他需要外部化的模块
-      ],
-      plugins: [
-        nodeResolve({
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
-          moduleDirectories: ['node_modules'], // 确保解析 node_modules 中的模块
-        }),
-        commonjs(),
-      ],
+        assetFileNames: 'assets/[name]-[hash][extname]'
+      }
     },
   },
 });
